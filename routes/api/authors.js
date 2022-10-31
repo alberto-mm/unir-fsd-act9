@@ -1,7 +1,14 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-    res.send('Obtención de los autores');
+const { getAll } = require('../../models/autor.model');
+
+router.get('/', async (req, res) => {
+    try {
+        const authors = await getAll();
+        res.json(authors);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
 });
 
 router.post('/', (req, res) => {
