@@ -8,4 +8,8 @@ const getById = (postId) => {
     return executeQueryOne('select * from posts where id = ?', [postId]);
 };
 
-module.exports = { getAll, getById };
+const create = ({ titulo, descripcion, categoria, fk_autor }) => {
+    return executeQuery('insert into posts (titulo, descripcion, categoria, fk_autor) values (?, ?, ?, ?)', [titulo, descripcion, categoria, fk_autor]);
+};
+
+module.exports = { getAll, getById, create };

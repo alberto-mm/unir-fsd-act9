@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getAll, getById } = require('../../models/post.model');
+const { getAll, getById, create } = require('../../models/post.model');
 
 router.get('/', async (req, res) => {
     try {
@@ -9,10 +9,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.json({ error: err.message });
     }
-});
-
-router.post('/', (req, res) => {
-    res.send('Creación de un post');
 });
 
 // api/posts/:postId
@@ -34,6 +30,16 @@ router.get('/author/:authorId', (req, res) => {
     const { authorId } = req.params;
 
     res.send('Obtención de los posts del autor con ID ' + authorId);
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const result = await create(req.body);
+        const post = await getById(result.insertId);
+        res.json(post);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
 });
 
 module.exports = router;

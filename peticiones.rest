@@ -2,6 +2,14 @@ GET http://localhost:3000/api/posts
 
 ###
 POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "titulo": "Lorem Ipsum",
+    "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nulla odio, dignissim non vehicula et, vehicula ac orci. Ut vel dolor ut neque tincidunt aliquam vitae in justo. Aenean eget purus ut neque placerat imperdiet. Etiam ut aliquet nisl, egestas consequat sem. Vivamus molestie lacinia fermentum. Vivamus in vestibulum arcu, sed auctor quam. In posuere ornare libero. Mauris iaculis pellentesque ex, at interdum nulla pulvinar quis. Ut quis urna in nisi facilisis tincidunt non ut nisi. Praesent sollicitudin rutrum felis, nec rutrum risus.",
+    "categoria": "ciencia",
+    "fk_autor": 1
+}
 
 ###
 GET http://localhost:3000/api/posts/1
@@ -16,6 +24,13 @@ GET http://localhost:3000/api/authors
 
 ###
 POST http://localhost:3000/api/authors
+Content-Type: application/json
+
+{
+    "nombre": "Manuel",
+    "email": "manuel@gmail.com",
+    "imagen": "https://randomuser.me/api/portraits/men/3.jpg"
+}
 
 ###
 GET http://localhost:3000/api/authors/1

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getAll, getById } = require('../../models/autor.model');
+const { getAll, getById, create } = require('../../models/autor.model');
 
 router.get('/', async (req, res) => {
     try {
@@ -11,10 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
-    res.send('Creación de un autor');
-});
-
 router.get('/:authorId', async (req, res) => {
     const { authorId } = req.params;
 
@@ -23,6 +19,16 @@ router.get('/:authorId', async (req, res) => {
         res.json(author);
     } catch (err) {
         req.json({ error: err.message });
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const result = await create(req.body);
+        const author = await getById(result.insertId);
+        res.json(author);
+    } catch (err) {
+        res.json({ error: err.mesage });
     }
 });
 

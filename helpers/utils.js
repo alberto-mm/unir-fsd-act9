@@ -15,6 +15,6 @@ const executeQueryOne = (sql, params = []) => {
             resolve(result[0]);
         });
     });
-}
+};
 
 module.exports = { executeQuery, executeQueryOne };

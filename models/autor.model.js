@@ -8,4 +8,8 @@ const getById = (authorId) => {
     return executeQueryOne('select * from autores where id = ?', [authorId]);
 };
 
-module.exports = { getAll, getById }
+const create = ({ nombre, email, imagen }) => {
+    return executeQuery('insert into autores (nombre, email, imagen) values (?, ?, ?)', [nombre, email, imagen]);
+};
+
+module.exports = { getAll, getById, create };
