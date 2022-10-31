@@ -1,7 +1,11 @@
-const { executeQuery } = require('../helpers/utils');
+const { executeQuery, executeQueryOne } = require('../helpers/utils');
 
 const getAll = () => {
     return executeQuery('select * from posts');
 };
 
-module.exports = { getAll };
+const getById = (postId) => {
+    return executeQueryOne('select * from posts where id = ?', [postId]);
+};
+
+module.exports = { getAll, getById };

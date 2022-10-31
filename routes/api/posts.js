@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getAll } = require('../../models/post.model');
+const { getAll, getById } = require('../../models/post.model');
 
 router.get('/', async (req, res) => {
     try {
@@ -17,10 +17,15 @@ router.post('/', (req, res) => {
 
 // api/posts/:postId
 // Recuperar un post (incluyendo los datos del autor)
-router.get('/:postId', (req, res) => {
+router.get('/:postId', async (req, res) => {
     const { postId } = req.params;
 
-    res.send('Obtención del post con ID ' + postId);
+    try {
+        const post = await getById(postId);
+        res.json(post);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
 });
 
 // api/posts/author/:authorId
