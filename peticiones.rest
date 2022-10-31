@@ -1,0 +1,12 @@
+GET http://localhost:3000/api/posts
+
+###
+POST http://localhost:3000/api/posts
+
+
+
+###
+GET http://localhost:3000/api/authors
+
+###
+POST http://localhost:3000/api/authors
