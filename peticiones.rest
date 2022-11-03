@@ -1,6 +1,12 @@
 GET http://localhost:3000/api/posts
 
 ###
+GET http://localhost:3000/api/posts/1
+
+###
+GET http://localhost:3000/api/posts/author/1
+
+###
 POST http://localhost:3000/api/posts
 Content-Type: application/json
 
@@ -11,16 +17,13 @@ Content-Type: application/json
     "fk_autor": 1
 }
 
-###
-GET http://localhost:3000/api/posts/1
-
-###
-GET http://localhost:3000/api/posts/author/1
-
 
 
 ###
 GET http://localhost:3000/api/authors
+
+###
+GET http://localhost:3000/api/authors/1
 
 ###
 POST http://localhost:3000/api/authors
@@ -31,6 +34,3 @@ Content-Type: application/json
     "email": "manuel@gmail.com",
     "imagen": "https://randomuser.me/api/portraits/men/3.jpg"
 }
-
-###
-GET http://localhost:3000/api/authors/1
