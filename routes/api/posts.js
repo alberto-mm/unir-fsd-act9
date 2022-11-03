@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const { getAll, getById, create } = require('../../models/post.model');
 
+// /api/posts
+// Recuperar todos los posts (incluyendo los datos de sus autores)
 router.get('/', async (req, res) => {
     try {
         const posts = await getAll();
@@ -11,7 +13,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// api/posts/:postId
+// /api/posts/:postId
 // Recuperar un post (incluyendo los datos del autor)
 router.get('/:postId', async (req, res) => {
     const { postId } = req.params;
@@ -24,7 +26,7 @@ router.get('/:postId', async (req, res) => {
     }
 });
 
-// api/posts/author/:authorId
+// /api/posts/author/:authorId
 // Recuperar los diferentes posts escritos por un autor en concreto
 router.get('/author/:authorId', (req, res) => {
     const { authorId } = req.params;
